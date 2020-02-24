@@ -10,16 +10,23 @@
 
 'use strict';
 import type {Node} from 'react';
-import {StyleSheet, ImageBackground} from 'react-native';
+import {StyleSheet, ImageBackground, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {Text} from 'galio-framework';
+import {Icon, Image} from "react-native-elements";
+import {Actions} from "react-native-router-flux";
 
-const Header = (): Node => (
+const Header = (props): Node => (
     <ImageBackground
         accessibilityRole={'image'}
         source={require('./../assets/work_space.jpeg')}
         style={styles.background}
         imageStyle={styles.logo}>
+        <TouchableOpacity onPress={()=>{
+            Actions.pop();
+        }} style={{position: 'absolute', top: 0, left: 0, margin: 20, width: props.isback ?20:0}}>
+            <Icon style={{margin: 10}} name={"arrow-back"} family="feather" size={30} color={'black'}/>
+        </TouchableOpacity>
         <Text h5 bold>Welcome</Text>
         <Text h3>To Work And Connect</Text>
         <Text h6 italic>www.workandconnect.net</Text>
