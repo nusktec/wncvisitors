@@ -104,7 +104,7 @@ class Home extends React.Component<props> {
             <KeyboardAvoidingView behavior="padding" enabled>
                 <StatusBar barStyle="light-content" backgroundColor={'black'}/>
                 <SafeAreaView>
-                    <View style={{flexDirection: 'column'}}>
+                    <ScrollView style={{flexDirection: 'column'}}>
                         <Header />
                         <View style={{
                             backgroundColor: '#da2a35',
@@ -154,7 +154,7 @@ class Home extends React.Component<props> {
                                 </TouchableOpacity>
                             </View>
                         </ScrollView>
-                    </View>
+                    </ScrollView>
                 </SafeAreaView>
             </KeyboardAvoidingView>
         )
