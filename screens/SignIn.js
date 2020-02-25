@@ -14,6 +14,7 @@ import Toast from "react-native-simple-toast";
 import axios from "axios";
 import AsyncStorage from "@react-native-community/async-storage";
 import SweetAlert from "react-native-sweet-alert";
+import {Dropdown} from "react-native-material-dropdown";
 
 const signResponse = {
     status: '',
@@ -21,7 +22,6 @@ const signResponse = {
     pin: '',
 };
 let errorLib = null;
-
 class SignIn extends React.Component<> {
 
     constructor(props) {
@@ -110,6 +110,14 @@ class SignIn extends React.Component<> {
     };
 
     render() {
+        let data = [{
+            value: 'Visit',
+        }, {
+            value: 'Client',
+        }, {
+            value: 'Enquiry',
+        },
+            {value: 'Others'}];
         return (
             <View>
                 <StatusBar barStyle="light-content" backgroundColor={'black'}/>
@@ -155,17 +163,12 @@ class SignIn extends React.Component<> {
                                        style={{width: 250}}
                                        iconColor="grey"/>
 
-                                <Input placeholder="Purpose Of Visit"
-                                       label={'Purpose'}
-                                       right
-                                       icon="meh"
-                                       family="feather"
-                                       iconSize={14}
-                                       color={'black'}
-                                       value={this.state.purpose}
-                                       onChangeText={(txt) => this.setState({purpose: txt})}
-                                       style={{width: 250}}
-                                       iconColor="grey"/>
+                                <Dropdown
+                                    onChangeText={(v,i,d)=>this.setState({purpose: v})}
+                                    containerStyle={{width: 250}}
+                                    label='Purpose'
+                                    data={data}
+                                />
 
                                 <Input placeholder="Phone No."
                                        label={'Phone'}
